@@ -170,6 +170,28 @@ const Dashboard = () => {
         <div>
             <h2 className="page-header">Dashboard</h2>
             <div className="row">
+            <div className="col-6">
+                    <div className="card full-height">
+                        {/* chart */}
+                        <Chart
+                            options={themeReducer === 'theme-mode-dark' ? {
+                                ...chartOptions.options,
+                                theme: { mode: 'dark'}
+                            } :themeReducer === 'theme-mode-oddo' ? {
+                                ...chartOptions.options,
+                                theme: { mode: 'oddo'}
+                            }
+                            :
+                            {
+                                ...chartOptions.options,
+                                theme: { mode: 'light'}
+                            }}
+                            series={chartOptions.series}
+                            type='bar'
+                            height='100%'
+                        />
+                    </div>
+                </div>
                 <div className="col-6">
                     <div className="row">
                         {
@@ -185,24 +207,8 @@ const Dashboard = () => {
                         }
                     </div>
                 </div>
-                <div className="col-6">
-                    <div className="card full-height">
-                        {/* chart */}
-                        <Chart
-                            options={themeReducer === 'theme-mode-dark' ? {
-                                ...chartOptions.options,
-                                theme: { mode: 'dark'}
-                            } : {
-                                ...chartOptions.options,
-                                theme: { mode: 'light'}
-                            }}
-                            series={chartOptions.series}
-                            type='line'
-                            height='100%'
-                        />
-                    </div>
-                </div>
-                <div className="col-4">
+       
+                {/* <div className="col-4">
                     <div className="card">
                         <div className="card__header">
                             <h3>top customers</h3>
@@ -219,8 +225,8 @@ const Dashboard = () => {
                             <Link to='/'>view all</Link>
                         </div>
                     </div>
-                </div>
-                <div className="col-8">
+                </div> */}
+                {/* <div className="col-8">
                     <div className="card">
                         <div className="card__header">
                             <h3>latest orders</h3>
@@ -237,7 +243,7 @@ const Dashboard = () => {
                             <Link to='/'>view all</Link>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

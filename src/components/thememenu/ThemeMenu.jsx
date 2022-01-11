@@ -18,6 +18,12 @@ const mode_settings = [
         name: 'Dark',
         background: 'dark-background',
         class: 'theme-mode-dark'
+    },
+    {
+        id: 'oddo',
+        name: 'Oddo',
+        background: 'oddo-background',
+        class: 'theme-mode-oddo'
     }
 ]
 
@@ -101,6 +107,7 @@ const ThemeMenu = () => {
         const themeClass = mode_settings.find(e => e.class === localStorage.getItem('themeMode', 'theme-mode-light'))
 
         const colorClass = color_settings.find(e => e.class === localStorage.getItem('colorMode', 'theme-mode-light'))
+
 
         if (themeClass !== undefined) setcurrMode(themeClass.id)
 
