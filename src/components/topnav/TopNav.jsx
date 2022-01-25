@@ -2,16 +2,16 @@ import React from 'react'
 
 import './topnav.css'
 
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 
 import Dropdown from '../dropdown/Dropdown'
 
 import ThemeMenu from '../thememenu/ThemeMenu'
 
 import notifications from '../../assets/JsonData/notification.json'
-
+import * as actionType from '../../constants/actionTypes';
 import user_image from '../../assets/images/profile.jpg'
-
+import { useDispatch } from 'react-redux';
 import user_menu from '../../assets/JsonData/user_menus.json'
 
 const curr_user = {
@@ -27,8 +27,8 @@ const renderNotificationItem = (item, index) => (
 )
 
 const renderUserToggle = (user) => (
-    <div className="topnav__right-user">
-        <div className="topnav__right-user__image">
+    <div className="topnav__right-user" >
+        <div className="topnav__right-user__image" >
             <img src={user.image} alt="" />
         </div>
         <div className="topnav__right-user__name">
@@ -37,16 +37,27 @@ const renderUserToggle = (user) => (
     </div>
 )
 
-const renderUserMenu =(item, index) => (
-    <Link to='/' key={index}>
-        <div className="notification-item">
+const renderUserMenu =(item, index,action) => (
+    // <Link to='/' key={index}>
+        <div className="notification-item" onClick={item.id===3 ? action:()=>console.log("clicked")}>
             <i className={item.icon}></i>
             <span>{item.content}</span>
         </div>
-    </Link>
+    // </Link>
 )
 
 const Topnav = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const logout = () => {
+        console.log("logout clicked")
+        dispatch({ type: actionType.LOGOUT });
+    
+        history.push('/auth');
+    
+   
+     };
+    
     return (
         <div className='topnav'>
             <div className="topnav__search">
@@ -59,7 +70,7 @@ const Topnav = () => {
                     <Dropdown
                         customToggle={() => renderUserToggle(curr_user)}
                         contentData={user_menu}
-                        renderItems={(item, index) => renderUserMenu(item, index)}
+                        renderItems={(item, index) => renderUserMenu(item, index,logout)}
                     />
                 </div>
                 <div className="topnav__right-item">
@@ -81,3 +92,31 @@ const Topnav = () => {
 }
 
 export default Topnav
+
+// {
+//     "display_name": "Orders",
+//     "route": "/orders",
+//     "icon": "bx bx-cart"
+// },
+
+// {
+//     "display_name": "categories",
+//     "route": "/categories",
+//     "icon": "bx bx-list-ol"
+// },
+// {
+//     "display_name": "discount",
+//     "route": "/discount",
+//     "icon": "bx bx-gift"
+// },
+// {
+//     "display_name": "inventory",
+//     "route": "/inventory",
+//     "icon": "bx bx-store-alt"
+// },
+
+// {
+//     "display_name": "Products",
+//     "route": "/products",
+//     "icon": "bx bx-package"
+// },

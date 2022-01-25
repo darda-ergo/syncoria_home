@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals'
-
-import { createStore } from 'redux'
-
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux'
-
 import rootReducer from './redux/reducers'
-
+import { BrowserRouter } from 'react-router-dom'
 import './assets/boxicons-2.0.7/css/boxicons.min.css'
 import './assets/css/grid.css'
 import './assets/css/theme.css'
@@ -16,17 +14,19 @@ import './assets/css/index.css'
 import Layout from './components/layout/Layout'
 
 const store = createStore(
-  rootReducer
+  rootReducer,compose(applyMiddleware(thunk))
 )
 
 document.title = 'Syncoria Connector'
 
 ReactDOM.render(
+  <BrowserRouter>
   <Provider store={store}>
     <React.StrictMode>
       <Layout />
     </React.StrictMode>
-  </Provider>,
+  </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

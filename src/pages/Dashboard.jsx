@@ -170,33 +170,12 @@ const Dashboard = () => {
         <div>
             <h2 className="page-header">Dashboard</h2>
             <div className="row">
-            <div className="col-6">
-                    <div className="card full-height">
-                        {/* chart */}
-                        <Chart
-                            options={themeReducer === 'theme-mode-dark' ? {
-                                ...chartOptions.options,
-                                theme: { mode: 'dark'}
-                            } :themeReducer === 'theme-mode-oddo' ? {
-                                ...chartOptions.options,
-                                theme: { mode: 'oddo'}
-                            }
-                            :
-                            {
-                                ...chartOptions.options,
-                                theme: { mode: 'light'}
-                            }}
-                            series={chartOptions.series}
-                            type='bar'
-                            height='100%'
-                        />
-                    </div>
-                </div>
-                <div className="col-6">
+ 
+                <div className="col-12">
                     <div className="row">
                         {
                             statusCards.map((item, index) => (
-                                <div className="col-6" key={index}>
+                                <div className="col-4" key={index}>
                                     <StatusCard
                                         icon={item.icon}
                                         count={item.count}
@@ -244,6 +223,30 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div> */}
+            </div>
+            <div className='row'>
+            <div className="col-12">
+                    <div className="card full-height">
+                        {/* chart */}
+                        <Chart
+                            options={themeReducer === 'theme-mode-dark' ? {
+                                ...chartOptions.options,
+                                theme: { mode: 'dark'}
+                            } :themeReducer === 'theme-mode-oddo' ? {
+                                ...chartOptions.options,
+                                theme: { mode: 'oddo'}
+                            }
+                            :
+                            {
+                                ...chartOptions.options,
+                                theme: { mode: 'light'}
+                            }}
+                            series={chartOptions.series}
+                            type='bar'
+                            height='100%'
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     )

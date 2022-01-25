@@ -130,7 +130,7 @@ input:focus {
 
 .oddo-background{
     background-color: var(--main-bg-oddo);
-    color:var(--txt-color-oddo);
+    color:#ffffff;
 }
 
 .dark-background {

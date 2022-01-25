@@ -206,6 +206,7 @@ const Analytics = () => {
     const [state,setState] = useState(charts_state)
 
     const themeReducer = useSelector(state => state.ThemeReducer.mode)
+    console.log("theme reducer",themeReducer)
 
    function updateCharts() {
     const max = 90;
@@ -250,7 +251,7 @@ const Analytics = () => {
                 }
                 :
                 {
-                    ...state.optionsMixedCharts,
+                    ...state.optionsMixedChart,
                     theme: { mode: 'light'}
                 }}
                   
@@ -270,7 +271,7 @@ const Analytics = () => {
                     width="480"
                   />
                 </div>
-              <div className="row">
+              {/* <div className="row">
                 <div className="col percentage-chart">
                   <Chart
                     options={state.optionsBar}
@@ -284,7 +285,7 @@ const Analytics = () => {
                 <p className="col" style={{position:"absolute",right:"100px",top:"150px"}}>
                   <button className='refresh-button' onClick={updateCharts}>Refresh!</button>
                 </p>
-              </div>
+              </div> */}
             </div>
           );
     

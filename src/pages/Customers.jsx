@@ -38,13 +38,13 @@ const Customers = () => {
                 <div className="col-12">
                     <div className="card">
                         <div className="card__body">
-                            <Table
+                            {/* <Table
                                 limit='10'
                                 headData={customerTableHead}
                                 renderHead={(item, index) => renderHead(item, index)}
                                 bodyData={customerList}
                                 renderBody={(item, index) => renderBody(item, index)}
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>
